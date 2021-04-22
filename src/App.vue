@@ -1,30 +1,84 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="side-bar">
+    <h1>Chat App</h1>
+
+    <input type="text" value="" class="input-search">
+    
+    <div>
+      <div class="user-item">
+        <img src="./assets/cat.png" alt="" srcset="" class="image">
+        <div>
+          <p>Cat Suu</p>
+        </div>
+      </div>
+      <div class="user-item">
+        <img src="./assets/mai-sakura.jpg" alt="" srcset="" class="image">
+        <div>
+          <p>Mai Sakura</p>
+        </div>
+      </div>
+      <div class="user-item">
+        <img src="./assets/spongebob.jpg" alt="" srcset="" class="image">
+        <div>
+          <p>SpongeBob</p>
+        </div>        
+      </div>
+    </div>
   </div>
   <router-view/>
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #272732;
+  color: #fff;
+}
+
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+.side-bar {
+  background: #202028;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  padding: 3rem 10rem;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.input-search {
+  display: block;
+  width: 100%;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  padding: 10px 30px;
+  background: #48485b;
+  color: #C0B9B8;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  margin-top: 50px;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.image {
+  border-radius: 50%;
+  width: 80px;
+}
+
+.user-item {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0;
 }
 </style>
