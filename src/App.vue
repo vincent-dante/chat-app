@@ -72,26 +72,33 @@ body {
 
 .input-search {
   display: block;
-  width: 100%;
+  width: 80%;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   border: none;
   background: #2a2a33;
-  color: #C0B9B8;
+  color: #6F696D;
   padding: 10px 40px;
   outline: none;
 }
 
 .input-search:focus {
-  transition: all 0.5s;
+  transition: all 0.3s;
   background: #353544;
+  color: #C0B9B8;
+  width: 100%;
+}
+
+.input-search:focus + .search-icon {
+  transition: all 0.5s;
+  color: #C0B9B8;
 }
 
 .search-icon {
   position: absolute;
   top: 10px;
   left: 15px;
-  color: #C0B9B8;
+  color: #6F696D;
 }
 
 .image {
