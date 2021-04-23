@@ -47,7 +47,6 @@ body {
   color: #fff;
 }
 
-
 #app {
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
