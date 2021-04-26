@@ -1,6 +1,9 @@
 <template>
   <div class="chat-box-container">
     <div class="chat-box">
+      <div class="chat-header">
+        <span class="user-status"></span><span class="user-title">Mai Sakura</span>
+      </div>
       <div class="chat-history">
 
         <div class="chat-message-left">
@@ -18,9 +21,17 @@
           <img src="../assets/mai-sakura.jpg" alt="" srcset="" class="chat-image">
         </div>
 
+        <div class="chat-message-left">
+          <img src="../assets/cat.png" alt="" srcset="" class="chat-image">
+          <div class="chat-message left-arrow">
+            I will go now. See you later!
+          </div>
+        </div>        
+
       </div>
       <div class="chat-form">
-
+        <input type="text" name="" id="" class="input-message" placeholder="Type Here...">
+        <input type="button" value="Send" class="btn-send">
       </div>
     </div>
   </div>
@@ -46,9 +57,8 @@ export default {
 }
 
 .chat-history {
-  height: 500px;
+  height: 700px;
   background: #202028;
-  border-radius: 4px 4px 0 0;
   padding: 2rem;
   text-align: left;
   font-size: 14px;
@@ -58,8 +68,10 @@ export default {
 
 .chat-form {
   height: 100px;
-  background: #2D2C3C;    
+  background: #202028;    
   border-radius: 0 0 4px 4px;
+  padding: 2rem;
+  border-top: 1px solid #7373f22e;
 }
 
 .chat-image {
@@ -104,5 +116,50 @@ export default {
   position: absolute;
   top: 15px;
   right: -15px;
+}
+
+.input-message {
+  width: 50%;
+  color: #C0B9B8;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 40px;
+  background: #353544;
+  outline: none;
+  margin-right: 20px;
+}
+
+.btn-send {
+  width: 15%;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  background: #6B6BF1;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-send:hover {
+  background: #5E5ED0;
+}
+
+.chat-header {
+  text-align: left;
+  padding: 10px 20px;
+  background: #202028;
+  border-radius: 4px 4px 0 0;
+  border-bottom: 1px solid #7373f22e;
+}
+
+.user-status {
+  display: inline-block;
+  border: 5px solid #46e646;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-title {
+  color: #777782;
 }
 </style>
