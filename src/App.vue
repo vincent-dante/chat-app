@@ -1,6 +1,12 @@
 <template>
   <div class="side-bar">
-    <h1>Chat App</h1>
+    <!-- <h1>Chat App</h1> -->
+    <div>
+      <img :src="require(`@/assets/${ currentUser.image }`)" alt="" srcset="" class="image">
+      <div>
+        <p>{{ currentUser.name }}</p>
+      </div>
+    </div>
 
     <div class="search-container">
       <input type="text" value="" class="input-search" placeholder="Search user...">
@@ -8,32 +14,73 @@
         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
       </svg>
     </div>
-
     
     <div class="user-item-container">
-      <div class="user-item">
-        <img src="./assets/cat.png" alt="" srcset="" class="image">
+      <div class="user-item" v-for="user in users" :key="user.id" @click="selectUser(user.id)">
+        <img :src="require(`@/assets/${user.image}`)" alt="" srcset="" class="image">
         <div class="user-name">
-          <p>Cat Suu</p>
+          <p>{{ user.name }}</p>
         </div>
-      </div>
-      <div class="user-item">
-        <img src="./assets/mai-sakura.jpg" alt="" srcset="" class="image">
-        <div class="user-name">
-          <p>Mai Sakura</p>
-        </div>
-      </div>
-      <div class="user-item">
-        <img src="./assets/spongebob.jpg" alt="" srcset="" class="image">
-        <div class="user-name">
-          <p>SpongeBob</p>
-        </div>        
       </div>
     </div>
+
   </div>
 
   <router-view/>
 </template>
+
+<script>
+import data from '../jsonUser.json';
+import mssg from '../jsonMessage.json';
+
+export default {
+  name: 'App',
+  data(){
+    return {
+      id: 1,
+      currentUser: {
+        name: "",
+        image: "no_image.png"
+      },
+      users: [],
+      userSelected: "",
+      chats: ""
+    }
+  },
+  mounted(){
+
+    this.getCurrentUsers();
+    this.getUsers();
+    
+  },
+  methods: {
+    getCurrentUsers(){
+      
+      let arr = data;
+      let i = arr.findIndex(obj => obj.id === this.id);
+      
+      this.currentUser = arr[i];
+
+    },
+    getUsers(){
+
+      this.users = data;
+      let i = this.users.findIndex(obj => obj.id === this.id);
+
+      if (i > -1) {
+        this.users.splice(i, 1);
+      }
+
+    },
+    selectUser(id){
+
+      this.userSelected = id;
+      this.chats = mssg;
+
+    }
+  }
+}
+</script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
@@ -72,7 +119,7 @@ body {
 
 .input-search {
   display: block;
-  width: 80%;
+  width: 100%;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   border: none;
@@ -86,7 +133,6 @@ body {
   transition: all 0.3s;
   background: #353544;
   color: #C0B9B8;
-  width: 100%;
 }
 
 .input-search:focus + .search-icon {

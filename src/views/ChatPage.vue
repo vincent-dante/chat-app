@@ -2,7 +2,7 @@
   <div class="chat-box-container">
     <div class="chat-box">
       <div class="chat-header">
-        <span class="user-status"></span><span class="user-title">Mai Sakura</span>
+        <span class="user-status"></span><span class="user-title">Cat Suu</span>
       </div>
       <div class="chat-history">
 
@@ -18,15 +18,16 @@
           <div class="chat-message right-arrow">
             Yes! I really need help now
           </div>
-          <img src="../assets/mai-sakura.jpg" alt="" srcset="" class="chat-image">
+          <img src="../assets/stitch.jpg" alt="" srcset="" class="chat-image">
         </div>
 
         <div class="chat-message-left">
           <img src="../assets/cat.png" alt="" srcset="" class="chat-image">
           <div class="chat-message left-arrow">
-            I will go now. See you later!
+            I will go now. See you!
           </div>
         </div>        
+     
 
       </div>
       <div class="chat-form">
@@ -38,8 +39,27 @@
 </template>
 
 <script>
+/* import data from '../../jsondata.json'; */
+
 export default {
-  name: 'Home'
+  name: 'ChatPage',
+  data(){
+    return {
+      users: []
+    }
+  },
+  mounted(){
+
+    this.getUsers();
+    
+  },
+  methods: {
+    getUsers(){
+
+      /* this.users = data; */
+
+    }
+  }
 }
 </script>
 
@@ -47,8 +67,7 @@ export default {
 
 .chat-box-container {
   width: 60%;
-  height: 500px;
-  margin: 50px 0 0 40%;
+  margin: 50px 0 50px 40%;
   padding: 0 5rem;
 }
 
@@ -57,13 +76,14 @@ export default {
 }
 
 .chat-history {
-  height: 700px;
+  height: 75vh;
   background: #202028;
   padding: 2rem;
   text-align: left;
   font-size: 14px;
   color: #9494A4;
   line-height: 1.5rem;
+  overflow-y: scroll;
 }
 
 .chat-form {

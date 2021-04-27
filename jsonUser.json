@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Stitch",
+    "image": "stitch.jpg"
+  },  
+  {
+    "id": 2,
+    "name": "Cat Suu",
+    "image": "cat.png"
+  },
+  {
+    "id": 3,
+    "name": "Mai Sakura",
+    "image": "mai-sakura.jpg"
+  },
+  {
+    "id": 4,
+    "name": "SpongeBob",
+    "image": "spongebob.jpg"
+  }
+]
