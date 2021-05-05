@@ -3,7 +3,7 @@ import ChatPage from '../views/ChatPage.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/:id',
     name: 'ChatPage',
     component: ChatPage
   }

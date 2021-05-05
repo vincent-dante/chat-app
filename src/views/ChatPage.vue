@@ -2,33 +2,27 @@
   <div class="chat-box-container">
     <div class="chat-box">
       <div class="chat-header">
-        <span class="user-status"></span><span class="user-title">Cat Suu</span>
+        <span class="user-status"></span><span class="user-title">{{ recipient_name }}</span>
       </div>
       <div class="chat-history">
 
-        <div class="chat-message-left">
-          <img src="../assets/cat.png" alt="" srcset="" class="chat-image">
-          <div class="chat-message left-arrow">
-            Hi there! <br>
-            Looking to get started? I can help answer to your question! <br>
+        <div v-for="(message, id) in messages" :key="id">
+          <div v-if="(message.sender === sender_id && message.recipient === recipient_id) || (message.recipient === sender_id && message.sender === recipient_id)">
+            <div v-if="message.sender === sender_id" class="chat-message-right">
+              <div  class="chat-message right-arrow">
+                {{ message.content }}
+              </div>
+              <img src="../assets/stitch.jpg" alt="" srcset="" class="chat-image">
+            </div>
+            <div v-else class="chat-message-left">
+              <img :src="require(`@/assets/${ recipient_image }`)" alt="" srcset="" class="chat-image">
+              <div  class="chat-message left-arrow">
+                {{ message.content }}
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="chat-message-right">
-          <div class="chat-message right-arrow">
-            Yes! I really need help now
-          </div>
-          <img src="../assets/stitch.jpg" alt="" srcset="" class="chat-image">
-        </div>
-
-        <div class="chat-message-left">
-          <img src="../assets/cat.png" alt="" srcset="" class="chat-image">
-          <div class="chat-message left-arrow">
-            I will go now. See you!
-          </div>
-        </div>        
-     
-
+      
       </div>
       <div class="chat-form">
         <input type="text" name="" id="" class="input-message" placeholder="Type Here...">
@@ -39,24 +33,64 @@
 </template>
 
 <script>
-/* import data from '../../jsondata.json'; */
+import users_data from '../../jsonUser.json';
 
 export default {
   name: 'ChatPage',
   data(){
     return {
-      users: []
+      sender_id: "8856",
+      messages: [
+        {
+          "id": "0001",
+          "sender": "4452",
+          "recipient": "8856",
+          "content": "Hi there! Looking to get started? I can help to answer to your question!"
+        },
+        {
+          "id": "0002",
+          "sender": "8856",
+          "recipient": "4452",
+          "content": "Yes! I really need help now"
+        },
+        {
+          "id": "0003",
+          "sender": "4452",
+          "recipient": "8856",
+          "content": "I will go now. See you!"
+        },
+        {
+          "id": "0004",
+          "sender": "3352",
+          "recipient": "8856",
+          "content": "test"
+        }
+      ]
     }
   },
   mounted(){
 
-    this.getUsers();
+    this.getRecipient();
     
   },
+  computed: {
+    recipient_id(){
+      return this.$route.params.id
+    },
+    recipient_name(){
+      let rcpt = users_data.find(x => x.id === this.$route.params.id);
+      return rcpt.name
+    },
+    recipient_image(){
+      let rcpt = users_data.find(x => x.id === this.$route.params.id);
+      return rcpt.image
+    }
+  },
   methods: {
-    getUsers(){
+    getRecipient(){
 
-      /* this.users = data; */
+      let i = users_data.find(x => x.id === this.recipient_id);
+      this.recipient_data = i;
 
     }
   }

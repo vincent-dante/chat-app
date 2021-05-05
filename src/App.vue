@@ -1,6 +1,5 @@
 <template>
   <div class="side-bar">
-    <!-- <h1>Chat App</h1> -->
     <div>
       <img :src="require(`@/assets/${ currentUser.image }`)" alt="" srcset="" class="image">
       <div>
@@ -26,25 +25,23 @@
 
   </div>
 
-  <router-view/>
+  <router-view />
 </template>
 
 <script>
 import data from '../jsonUser.json';
-import mssg from '../jsonMessage.json';
 
 export default {
   name: 'App',
   data(){
     return {
-      id: 1,
+      id: "8856",
       currentUser: {
         name: "",
         image: "no_image.png"
       },
       users: [],
-      userSelected: "",
-      chats: ""
+      userSelected: ""
     }
   },
   mounted(){
@@ -74,8 +71,7 @@ export default {
     },
     selectUser(id){
 
-      this.userSelected = id;
-      this.chats = mssg;
+      this.$router.push({ path: `/${id}` }) 
 
     }
   }
